@@ -44,7 +44,7 @@
       "logo": "https://datahiveacademichelp.com/logo.png",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+91-9500170229",
+        "telephone": "+91-9790916910",
         "contactType": "customer service",
         "availableLanguage": ["English"],
         "contactOption": "TollFree"
@@ -2149,7 +2149,7 @@ ul{list-style:none;}
           <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Your Brief — It's Free
         </button>
         <a href="https://wa.me/919790916910?text=Hi%20DataHive!%20I%20need%20academic%20help%20and%20want%20a%20free%20quote" target="_blank" rel="noopener" class="btn-cta-outline" aria-label="WhatsApp DataHive">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp +91 9500 170 229
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp +91 9790 916 910
         </a>
       </div>
       <p style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:24px;margin-bottom:0;">
@@ -2369,6 +2369,29 @@ function submitForm(){
   const email=document.getElementById('f-email').value.trim();
   const service=document.getElementById('f-service').value;
   if(!name||!phone||!email||!service){alert('Please fill in all required fields (Name, Phone, Email, Service).');return;}
+
+  const country=document.getElementById('f-country').value||'N/A';
+  const uni=document.getElementById('f-uni').value||'N/A';
+  const topic=document.getElementById('f-topic').value||'N/A';
+  const deadline=document.getElementById('f-deadline').value||'N/A';
+  const notes=document.getElementById('f-msg').value||'N/A';
+
+  const text=
+`📋 *NEW QUOTE REQUEST*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+📧 *Email:* ${email}
+🎓 *Service:* ${service}
+🌍 *Country:* ${country}
+🏫 *University:* ${uni}
+📝 *Topic:* ${topic}
+⏰ *Deadline:* ${deadline}
+💬 *Notes:* ${notes}
+━━━━━━━━━━━━━━━━━━━━
+📌 Sent from DataHive website`;
+
+  window.open('https://wa.me/919790916910?text='+encodeURIComponent(text),'_blank');
   document.getElementById('modalForm').style.display='none';
   document.getElementById('modalSuccess').style.display='block';
 }
@@ -2378,13 +2401,26 @@ function submitQuote(){
   const email=document.getElementById('q-email').value.trim();
   const phone=document.getElementById('q-phone').value.trim();
   if(!email&&!phone){alert('Please enter your email or WhatsApp number.');return;}
+
   const service=document.getElementById('q-service').value||'Assignment Help';
-  const deadline=document.getElementById('q-deadline').value;
-  const pages=document.getElementById('q-pages').value;
-  const desc=document.getElementById('q-desc').value;
-  const wa='919500170229';
-  const msg=encodeURIComponent(`Hi DataHive! I need help with: *${service}*\nDeadline: ${deadline||'TBD'}\nPages/Words: ${pages||'TBD'}\nEmail: ${email||'N/A'}\nDetails: ${desc||'N/A'}`);
-  window.open(`https://wa.me/${wa}?text=${msg}`,'_blank');
+  const deadline=document.getElementById('q-deadline').value||'TBD';
+  const pages=document.getElementById('q-pages').value||'TBD';
+  const descEl=document.getElementById('q-desc');
+  const desc=descEl?descEl.value||'N/A':'N/A';
+
+  const text=
+`📋 *NEW QUICK QUOTE*
+━━━━━━━━━━━━━━━━━━━━
+🎓 *Service:* ${service}
+⏰ *Deadline:* ${deadline}
+📄 *Pages/Words:* ${pages}
+📧 *Email:* ${email||'N/A'}
+📞 *Phone:* ${phone||'N/A'}
+💬 *Details:* ${desc}
+━━━━━━━━━━━━━━━━━━━━
+📌 Sent from DataHive website`;
+
+  window.open('https://wa.me/919790916910?text='+encodeURIComponent(text),'_blank');
 }
 
 /* ── CHIPS ── */
